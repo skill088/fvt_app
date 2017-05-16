@@ -73,6 +73,9 @@ p {
     color: $grayLight;
     text-decoration: none;
   }
+  &:active {
+    text-decoration: none;
+  }
 }
 
 /* footer */
