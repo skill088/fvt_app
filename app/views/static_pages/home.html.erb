@@ -1,5 +1,12 @@
-<h1>FVT App</h1>
-<p>
-	Это домашняя страница для примера веб-приложения на 
-	<a href="http://rubyonrails.org/">Ruby on Rails</a>
-</p>
+<div class="center hero-unit">
+	<h1>Welcome to the FVT App</h1>
+
+	<h2>
+		Это домашняя страница для примера веб-приложения на 
+		<a href="http://rubyonrails.org/">Ruby on Rails</a>.
+	</h2>
+	
+	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
+
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/'%>
