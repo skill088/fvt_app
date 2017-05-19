@@ -1,5 +1,4 @@
 require 'rubygems'
-
 # --- Instructions ---
 # Sort the contents of this file into a Spork.prefork and a Spork.each_run
 # block.
@@ -36,8 +35,8 @@ require 'rubygems'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
-
+#require 'rspec/autorun'
+#ЭТО Я НАЕБНУЛ
 
 require 'capybara/rspec'
 require 'capybara/rails'
