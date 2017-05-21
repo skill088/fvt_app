@@ -3,13 +3,15 @@ ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.2'
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass'
 gem 'bcrypt-ruby', '3.1.2'
+gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '3.3.2'
   gem 'guard-rspec', '4.6.0'
+  gem 'rspec-its'
 end
 
 group :test do
@@ -18,6 +20,7 @@ group :test do
   gem 'factory_girl_rails', '4.2.1'
 end
 
+gem 'sprockets'
 gem 'sass-rails', '~>4.0.1'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
