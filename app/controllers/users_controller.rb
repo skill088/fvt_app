@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+  before_action :admin_alive,     only: :destroy
+  before_action :auth_user,   only: [:new, :create]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -53,6 +55,12 @@ class UsersController < ApplicationController
 
     # Before filters
 
+    def auth_user
+      if signed_in?
+        redirect_to root_url, notice: "You are alredy registered"
+      end
+    end
+
     def signed_in_user
       unless signed_in?
         store_location
@@ -67,5 +75,11 @@ class UsersController < ApplicationController
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    def admin_alive
+      if current_user?(User.find(params[:id]))
+        redirect_to users_url
+      end
     end
 end
