@@ -4,13 +4,13 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      flash[:success] = "Micropost created!"
+      flash[:success] = "Сообщение опубликовано!"
       redirect_to root_url
     else
       #@feed_items = microposts
       #render 'static_pages/home'
       #flash[:error] = "Error: Micropost should not be blank!"
-      redirect_to root_url, notice: "Error: Micropost shouldn't be blank!"
+      redirect_to root_url, notice: "Публикация не должна быть пустой!"
     end
   end
 

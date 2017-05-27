@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_action :auth_user,   only: [:new, :create]
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], :per_page => 10)
   end
 
 	def show
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "Профиль обновлён"
       redirect_to @user
     else
       render 'edit'
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to FVT App!"
+      flash[:success] = "Добро пожаловать на FVT App!"
       redirect_to @user
     else
       render 'new'
@@ -44,19 +44,19 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted."
+    flash[:success] = "Пользователь удалён"
     redirect_to users_url
   end
 
   def following
-    @title = "Following"
+    @title = "Подписки"
     @user = User.find(params[:id])
-    @users = @user.followed_users.paginate(page: params[:page])
+    @users = @user.followed_users.paginate(page: params[:page], :per_page => 30)
     render 'show_follow'
   end
 
   def followers
-    @title = "Followers"
+    @title = "Подписчики"
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
 
     def auth_user
       if signed_in?
-        redirect_to root_url, notice: "You are alredy registered"
+        redirect_to root_url, notice: "Вы уже зарегистрированы!"
       end
     end
 
