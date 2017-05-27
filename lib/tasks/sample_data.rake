@@ -13,7 +13,7 @@ def make_users
                        password: "rwgwq2Su",
                        password_confirmation: "rwgwq2Su",
                        admin: true)
-  99.times do |n|
+  2.times do |n|
     name  = Faker::Name.name
     email = "example-#{n+1}@railstutorial.org"
     password  = "password"
