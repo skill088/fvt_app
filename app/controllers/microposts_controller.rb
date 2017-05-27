@@ -9,8 +9,8 @@ class MicropostsController < ApplicationController
     else
       #@feed_items = microposts
       #render 'static_pages/home'
-      flash[:error] = "Error: Micropost should not be blank!"
-      redirect_to root_url
+      #flash[:error] = "Error: Micropost should not be blank!"
+      redirect_to root_url, notice: "Error: Micropost shouldn't be blank!"
     end
   end
 

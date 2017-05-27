@@ -5,6 +5,9 @@
         <%= render 'shared/user_info' %>
       </section>
       <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
@@ -27,3 +30,11 @@
 
   <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 <% end %>
+<script>
+  left = document.getElementById('size');
+  area = document.getElementsByTagName('textarea')[0];
+  area.oninput =  function dynamic() {
+    length = 140 - area.value.length;
+    left.innerHTML = "Characters left: " + length;
+  }
+</script>
